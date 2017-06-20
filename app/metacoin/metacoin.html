@@ -131,21 +131,26 @@
           <div class="table-responsive col-md-5">
           <h2 class="sub-header">State submission</h2>
             <form>
-        <div class="form-group" ng-if="vm.creditReportState == 'true'">
-          <label for="time">Security freeze duration</label>
-          <select class="form-control" ng-model="vm.selectedDay" ng-options="x for x in vm.days">
-          </select>
+        <div class="frozen" ng-if="vm.creditReportState == 'true'" >  
+          <div class="form-group" ng-if="vm.creditReportState == 'true'">
+            <label for="time">Security freeze duration</label>
+            <select class="form-control" ng-model="vm.selectedDay" ng-options="x for x in vm.days">
+            </select>
+          </div>
+  			  <div class="form-group">
+  			    <label for="recipient">Creditor</label>
+  			    <input ng-model="vm.creditor" type="text" class="form-control" id="recipient" placeholder="Creditor">
+  			  </div>
+          <div class="form-group">
+            <label for="reason">Reason</label>
+            <input ng-model="vm.reason" type="text" class="form-control" id="reason" placeholder="Reason for release/freeze">
+          </div>
+          <button ng-click="vm.unFreeze()" class="btn btn-default">Unlock</button>
         </div>
-			  <div class="form-group">
-			    <label for="recipient">Creditor</label>
-			    <input ng-model="vm.creditor" type="text" class="form-control" id="recipient" placeholder="Creditor">
-			  </div>
-        <div class="form-group">
-          <label for="reason">Reason</label>
-          <input ng-model="vm.reason" type="text" class="form-control" id="reason" placeholder="Reason for release/freeze">
+        <div class="frozen" ng-if="vm.creditReportState != 'true'">
+        <h3>Credit Report security freeze is unactive for <i>24hrs</i> and is open to the creditor <i>BOI</i></h3><br>
+			   <button ng-click="vm.freeze()" class="btn btn-primary">Lock</button>
         </div>
-			  <button ng-if="vm.creditReportState != 'true'" ng-click="vm.freeze()" class="btn btn-primary">Lock</button>
-			  <button ng-if="vm.creditReportState == 'true'" ng-click="vm.unFreeze()" class="btn btn-default">Unlock</button>
 			</form>
           </div>
         </div>

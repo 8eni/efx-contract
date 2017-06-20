@@ -15,7 +15,7 @@ let metacoinComponent = {
 		var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 		// Contract details
 		var contractAbi = CreditStateControllerContract.abi;
-		console.log(CreditStateControllerContract)
+		console.log(CreditStateControllerContract.address)
 		var contractAddress = '0xeab1e277ffb7a41a65996f5a3666e8418b2e7607'; // CreditStateControllerContract.networks[0].address
 		var contract = web3.eth.contract(contractAbi).at(contractAddress); // Same as MetaCoin.deployed() in truffle console
 			
